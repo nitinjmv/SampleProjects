@@ -3,6 +3,7 @@ target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
+**/mvn*/*
 
 ### STS ###
 .apt_generated
@@ -36,3 +37,4 @@ build/
 /ai-test/HELP.md
 /ai-test/mvnw
 /ai-test/mvnw.cmd
+/Crypto-Account-CRUD/account-crud/.mvn/

@@ -1,4 +1,4 @@
-package dev.jmv.basic.dto;
+package dev.jmv.account.dto;
 
 
 import lombok.AllArgsConstructor;
@@ -10,8 +10,10 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class BasicDTO {
+public class AccountDTO {
 
     private Integer id;
-    private String title;
+    private String accountNumber;
+    private AccountStatus accountStatus;
+
 }

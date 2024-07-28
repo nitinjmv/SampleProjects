@@ -1,4 +1,4 @@
-package dev.jmv.basic.exception;
+package dev.jmv.account.exception;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;

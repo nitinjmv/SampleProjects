@@ -1,4 +1,4 @@
-package dev.jmv.basic.dto;
+package dev.jmv.account.dto;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;

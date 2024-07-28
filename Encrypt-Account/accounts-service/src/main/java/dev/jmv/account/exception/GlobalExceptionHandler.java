@@ -1,4 +1,4 @@
-package dev.jmv.basic.exception;
+package dev.jmv.account.exception;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;

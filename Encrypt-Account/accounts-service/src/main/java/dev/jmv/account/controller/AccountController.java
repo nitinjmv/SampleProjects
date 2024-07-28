@@ -1,8 +1,8 @@
-package dev.jmv.accounts.controller;
+package dev.jmv.account.controller;
 
-import dev.jmv.basic.dto.APIResponse;
-import dev.jmv.basic.dto.BasicDTO;
-import dev.jmv.basic.service.BasicService;
+import dev.jmv.account.dto.APIResponse;
+import dev.jmv.account.dto.AccountDTO;
+import dev.jmv.account.service.AccountService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -12,20 +12,20 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-import static dev.jmv.basic.Constants.BASICS_ENDPOINT;
+import static dev.jmv.account.Constants.ACCOUNTS_ENDPOINT;
 
 @Slf4j
 @RestController
-@RequestMapping(BASICS_ENDPOINT)
+@RequestMapping(ACCOUNTS_ENDPOINT)
 @RequiredArgsConstructor
-public class AccountsController {
+public class AccountController {
 
-    private final BasicService basicService;
+    private final AccountService accountService;
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<APIResponse> getAllBasics() throws Exception {
+    public ResponseEntity<APIResponse> getAllAccounts() throws Exception {
 
-        var response = basicService.getAllBasics();
+        var response = accountService.getAllAccounts();
 
         return ResponseEntity.ok(
                 APIResponse.builder()
@@ -38,7 +38,7 @@ public class AccountsController {
 
     @GetMapping("{id}")
     public ResponseEntity<APIResponse> getById(@PathVariable int id) {
-        var response = basicService.getById(id);
+        var response = accountService.getById(id);
         return ResponseEntity.ok(
                 APIResponse.builder()
                         .httpStatusCode(HttpStatus.OK.value())
@@ -49,8 +49,8 @@ public class AccountsController {
 
     @PostMapping(value = "create",
             consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<APIResponse> createBasics(@RequestBody BasicDTO basicDTO) {
-        var response = basicService.createBasics(basicDTO);
+    public ResponseEntity<APIResponse> createAccounts(@RequestBody AccountDTO accountDTO) {
+        var response = accountService.createAccounts(accountDTO);
 
         return new ResponseEntity<>(
                 APIResponse.builder()
@@ -62,9 +62,9 @@ public class AccountsController {
     }
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<APIResponse> createAllBasics(@RequestBody List<BasicDTO> basicDTOS) {
+    public ResponseEntity<APIResponse> createAllAccounts(@RequestBody List<AccountDTO> accountDTOS) {
 
-        var response = basicService.createAllBasics(basicDTOS);
+        var response = accountService.createAllAccounts(accountDTOS);
 
         return ResponseEntity.ok(
                 APIResponse.builder()
@@ -76,20 +76,20 @@ public class AccountsController {
     }
 
     @DeleteMapping
-    public ResponseEntity<Void> deleteBasic(@RequestBody BasicDTO basicDTO) {
-        basicService.delete(basicDTO);
+    public ResponseEntity<Void> deleteAccount(@RequestBody AccountDTO accountDTO) {
+        accountService.delete(accountDTO);
         return ResponseEntity.accepted().build();
     }
 
     @DeleteMapping("{id}")
-    public ResponseEntity<Void> deleteBasicById(@PathVariable int id) {
-        basicService.delete(id);
+    public ResponseEntity<Void> deleteAccountById(@PathVariable int id) {
+        accountService.delete(id);
         return ResponseEntity.accepted().build();
     }
 
     @PutMapping(value = "{id}")
-    public ResponseEntity<APIResponse> updateById(@PathVariable int id, @RequestBody BasicDTO basicDTO) {
-        basicService.updateById(id, basicDTO);
+    public ResponseEntity<APIResponse> updateById(@PathVariable int id, @RequestBody AccountDTO accountDTO) {
+        accountService.updateById(id, accountDTO);
         return ResponseEntity.accepted().build();
     }
 }

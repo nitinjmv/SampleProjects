@@ -1,5 +1,6 @@
 package dev.jmv.account.controller;
 
+import com.opencsv.exceptions.CsvException;
 import dev.jmv.account.dto.APIResponse;
 import dev.jmv.account.dto.AccountDTO;
 import dev.jmv.account.service.AccountService;
@@ -9,7 +10,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 
 import static dev.jmv.account.Constants.ACCOUNTS_ENDPOINT;
@@ -24,7 +27,7 @@ public class AccountController {
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<APIResponse> getAllAccounts() throws Exception {
-
+    //TODO call crypto API to decrypt yhe account number before returning the response
         var response = accountService.getAllAccounts();
 
         return ResponseEntity.ok(
@@ -73,6 +76,17 @@ public class AccountController {
                         .resultCount(response.size())
                         .build()
         );
+    }
+
+    @PostMapping(value = "bulk",
+            consumes = MediaType.MULTIPART_FORM_DATA_VALUE,
+            produces = MediaType.APPLICATION_JSON_VALUE
+    )
+    public ResponseEntity<APIResponse> bulkUpload(@RequestBody MultipartFile file) throws IOException, CsvException {
+        log.debug("File Name {}", file.getName());
+        var response = accountService.bulkUpload(file);
+
+        return ResponseEntity.ok(APIResponse.builder().build());
     }
 
     @DeleteMapping

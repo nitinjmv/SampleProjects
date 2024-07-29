@@ -18,7 +18,8 @@ public abstract class Transformer {
                     accountList.add(
                             Account.builder()
                                     .id(account.getId())
-                                    .title(account.getTitle())
+                                    .accountNumber(account.getAccountNumber())
+                                    .accountStatus(account.getAccountStatus())
                                     .build());
                 }
         );
@@ -30,7 +31,8 @@ public abstract class Transformer {
 
         return AccountDTO.builder()
                 .id(account.getId())
-                .title(account.getTitle())
+                .accountNumber(account.getAccountNumber())
+                .accountStatus(account.getAccountStatus())
                 .build();
     }
 
@@ -38,7 +40,8 @@ public abstract class Transformer {
         log.debug("Converting DTO to Entity");
         return Account.builder()
                 .id(accountDTO.getId())
-                .title(accountDTO.getTitle())
+                .accountNumber(accountDTO.getAccountNumber())
+                .accountStatus(accountDTO.getAccountStatus())
                 .build();
     }
 
@@ -51,7 +54,8 @@ public abstract class Transformer {
                     accountDTOList.add(
                             AccountDTO.builder()
                                     .id(account.getId())
-                                    .title(account.getTitle())
+                                    .accountNumber(account.getAccountNumber())
+                                    .accountStatus(account.getAccountStatus())
                                     .build());
                 }
         );

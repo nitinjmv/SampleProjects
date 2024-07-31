@@ -14,6 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 import static dev.jmv.account.Constants.ACCOUNTS_ENDPOINT;
 
@@ -82,7 +83,7 @@ public class AccountController {
             consumes = MediaType.MULTIPART_FORM_DATA_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE
     )
-    public ResponseEntity<APIResponse> bulkUpload(@RequestBody MultipartFile file) throws IOException, CsvException {
+    public ResponseEntity<APIResponse> bulkUpload(@RequestBody MultipartFile file) throws IOException, CsvException, ExecutionException, InterruptedException {
         log.debug("File Name {}", file.getName());
         var response = accountService.bulkUpload(file);
 

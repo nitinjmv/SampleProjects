@@ -15,6 +15,7 @@ public class CryptoService {
     }
 
     public String decrypt(String cipherText) throws InterruptedException {
+        log.debug("Encrypting {}", cipherText);
         Thread.sleep(100);
         return cipherText.replaceAll("[0-9]", "");
     }

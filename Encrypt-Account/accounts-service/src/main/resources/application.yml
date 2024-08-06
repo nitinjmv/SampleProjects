@@ -12,9 +12,15 @@ spring:
 logging:
   level:
     org.springframework.web: ERROR
-    dev.jmv.crypto: DEBUG
+    dev.jmv.crypto: INFO
   pattern:
     console: '%d{yyyy-MM-dd HH:mm:ss} - %msg%n'
     file: '%d{yyyy-MM-dd HH:mm:ss} - %msg%n'
   file:
     name: logs/app.log
+
+batch:
+  max:
+    size: 1000
+
+test: sasd

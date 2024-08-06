@@ -10,13 +10,13 @@ import org.springframework.stereotype.Service;
 public class CryptoService {
 
     public String encrypt(String plainText) throws InterruptedException {
-        Thread.sleep(100);
+        Thread.sleep(10);
         return plainText + Math.random();
     }
 
     public String decrypt(String cipherText) throws InterruptedException {
         log.debug("Encrypting {}", cipherText);
-        Thread.sleep(100);
+        Thread.sleep(10);
         return cipherText.replaceAll("[0-9]", "");
     }
 }

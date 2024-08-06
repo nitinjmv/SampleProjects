@@ -87,7 +87,7 @@ public class AccountController {
         log.debug("File Name {}", file.getName());
         var response = accountService.bulkUpload(file);
 
-        return ResponseEntity.ok(APIResponse.builder().build());
+        return ResponseEntity.ok(APIResponse.builder().resultCount(response.size()).data(response).build());
     }
 
     @DeleteMapping
